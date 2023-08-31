@@ -77,7 +77,7 @@ echo "<?php
     spl_autoload_register(function(${10}){
         $9 = [
             join(DIRECTORY_SEPARATOR, [__DIR__]),
-            join(DIRECTORY_SEPARATOR, [__DIR__, '..','App\\Controller']),
+            join(DIRECTORY_SEPARATOR, [__DIR__, 'App\\Controller']),
             join(DIRECTORY_SEPARATOR, [__DIR__, 'App\\Manager']),
             join(DIRECTORY_SEPARATOR, [__DIR__, 'App\\Model']),
             join(DIRECTORY_SEPARATOR, [__DIR__, 'App\\Service']),
