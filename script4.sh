@@ -74,7 +74,7 @@ echo "<?php
 ?>">>$directory/home.php
 # Création du fichier autoload.php
 echo "<?php
-    spl_autoload_register(function($10){
+    spl_autoload_register(function(${10}){
         $9 = [
             join(DIRECTORY_SEPARATOR, [__DIR__]),
             join(DIRECTORY_SEPARATOR, [__DIR__, '..','App\\Controller']),
@@ -86,9 +86,9 @@ echo "<?php
             join(DIRECTORY_SEPARATOR, [__DIR__, '..', 'App'])
         ];
         foreach($9 as $4){
-            $11 = join(DIRECTORY_SEPARATOR, [$4, $10.'.php']) ;
-            if(file_exists($11))
-                return require_once $11;
+            ${11} = join(DIRECTORY_SEPARATOR, [$4, ${10}.'.php']) ;
+            if(file_exists(${11}))
+                return require_once ${11};
         }
     });
 ?>">>$directory/autoload.php
