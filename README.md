@@ -60,7 +60,11 @@ fichiers :
 -> App/Utils/BddConnect.php (Classe de connexion à la base de données)
 ## Configuration des fichiers :
 Le script va configurer les fichiers suivants :
+
 -> env.php (configuration des informations de connexion à la base de données),
+
 -> autoload.php (configuration du fichier d'autochargement des classes),
+
 -> index.php (configuration du router avec la configuration du projet),
+
 -> .htaccess (configuration du fichier de configuration Apache).
