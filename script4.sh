@@ -109,7 +109,7 @@ echo "<?php ob_start()?>
     <li>Conditions générales</li>
     <li>Aide</li>
 </ul>
-<?php ${17} = ob_get_clean()?>">>$directory/App/Vue/footer.php
+<?php ${15} = ob_get_clean()?>">>$directory/App/Vue/footer.php
 echo "<?php ob_start()?>
 <?php if(isset(${20}['connected'])):?>
 <ul>
