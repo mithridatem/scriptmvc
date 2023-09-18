@@ -1,6 +1,6 @@
 #/bin/bash
 # variable d'environnement pour utilisation dans les scripts php
-set '$bdd' '$url' '$_SERVER' '$path' '$host' '$database' '$login' '$password' '$paths' '$class' '$file' '$navbar' '$title' '$content' '$footer' '$error' '$js' '$css' '$homeController' '$_SESSION'
+set '$bdd' '$url' '$_SERVER' '$path' '$host' '$database' '$login' '$password' '$paths' '$class' '$file' '$navbar' '$title' '$content' '$footer' '$error' '$js' '$css' '$homeController' '$_SESSION' '$value'
 # Configuration du projet
 echo "1-Saisir le nom de votre projet" 
 read directory
@@ -131,13 +131,13 @@ echo "<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php foreach ($css as $value):?>
-    <link rel="stylesheet" href="./Public/asset/style/<?=$value?>">
+    <?php foreach (${18} as ${21}):?>
+    <link rel="stylesheet" href="./Public/asset/style/<?=${21}?>">
     <?php endforeach ?>
-    <?php foreach ($js as $value):?>
-    <script src="./Public/asset/script/<?=$value?>" async></script>
+    <?php foreach (${17} as ${21}):?>
+    <script src="./Public/asset/script/<?=${21}?>" async></script>
     <?php endforeach ?>
-    <title><?=$title?></title>
+    <title><?=${13}?></title>
 </head>
 <body>
     <?=${12}?>
