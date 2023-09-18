@@ -1,6 +1,6 @@
 #/bin/bash
 # variable d'environnement pour utilisation dans les scripts php
-set '$bdd' '$url' '$_SERVER' '$path' '$host' '$database' '$login' '$password' '$paths' '$class' '$file'
+set '$bdd' '$url' '$_SERVER' '$path' '$host' '$database' '$login' '$password' '$paths' '$class' '$file' '$navbar' '$title' '$content' '$footer' '$error' '$js' '$css' '$homeController' '$_SESSION'
 # Configuration du projet
 echo "1-Saisir le nom de votre projet" 
 read directory
@@ -55,23 +55,10 @@ echo "<?php
     class BddConnect{
         //fonction connexion BDD
         public function connexion(){
-            //import du fichier de configuration
-            include './env.php';
             //retour de l'objet PDO
             return new \PDO('mysql:host='.$5.';dbname='.$6.'', $7, $8, 
             array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
 }}?>">>$directory/App/Utils/BddConnect.php
-# Création des pages de base du projet
-echo "<?php
-    echo 'Erreur 404
-    la page n\'existe pas';
-?>">>$directory/error.php
-echo "<?php
-    echo 'Page de test';
-?>">>$directory/test.php
-echo "<?php
-    echo 'Page d\'Accueil';
-?>">>$directory/home.php
 # Création du fichier autoload.php
 echo "<?php
     spl_autoload_register(function(${10}){
@@ -94,9 +81,11 @@ echo "<?php
 ?>">>$directory/autoload.php
 # Création du router
 echo "<?php
+    require_once './env.php';
     //import de l'autoloader des classes
     require_once './autoload.php';
-    use App\Utils\BddConnect;
+    use App\Controller\HomeController;
+    ${19} = new HomeController();
     //utilisation de session_start(pour gérer la connexion au serveur)
     session_start();
     //Analyse de l'URL avec parse_url() et retourne ses composants
@@ -106,18 +95,97 @@ echo "<?php
     //routeur
     switch ($4) {
         case '/$directory/':
-            include './home.php';
-            break;
-        case '/$directory/test':
-            include './test.php';
+            ${19}->getHome();
             break;
         default:
-            include './error.php';
+            ${19}->get404();
             break;
     }
 ?>">>$directory/index.php
+# Création du template
+echo "<?php ob_start()?>
+<ul>
+    <li>Contact</li>
+    <li>Conditions générales</li>
+    <li>Aide</li>
+</ul>
+<?php ${17} = ob_get_clean()?>">>$directory/App/Vue/footer.php
+echo "<?php ob_start()?>
+<?php if(isset(${20}['connected'])):?>
+<ul>
+    <li><a href="./">Accueil</a></li>
+</ul>
+<?php else:?>
+<ul>
+    <li><a href="./">Accueil</a></li>
+</ul>
+<?php endif;?>
+<?php ${12} = ob_get_clean()?>">>$directory/App/Vue/navbar.php
+echo "<?php ob_start()?>
+    <h1>Erreur 404 la page n'existe pas</h1>
+<?php ${14} = ob_get_clean()?>">>$directory/App/Vue/vueError.php
+echo "<?php ob_start()?>
+    <h1>Page d'Accueil</h1>
+<?php ${14} = ob_get_clean()?>">>$directory/App/Vue/vueHome.php
+echo "<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php foreach ($css as $value):?>
+    <link rel="stylesheet" href="./Public/asset/style/<?=$value?>">
+    <?php endforeach ?>
+    <?php foreach ($js as $value):?>
+    <script src="./Public/asset/script/<?=$value?>" async></script>
+    <?php endforeach ?>
+    <title><?=$title?></title>
+</head>
+<body>
+    <?=${12}?>
+    <?=${14}?>
+    <?=${15}?>
+</body>
+</html>">>$directory/App/Vue/vueTemplate.php
+# Création de la classe Template
+echo "<?php
+namespace App\vue;
+class Template{
+    public static function render(${12},${13},${14},${15},${16}, array ${17}, array ${18}){
+        if(file_exists('./App/Vue/'.$content)){
+            include './App/Vue/'.${12};
+            include './App/Vue/'.${15};
+            include './App/Vue/'.${14};
+        }
+        else{
+            ${12} = "";
+            ${15} = "";
+            ${13} = "Error 404";
+            include './App/Vue/vueError.php';
+        }
+        include './App/Vue/vueTemplate.php';
+    }
+}
+?>">>$directory/App/Vue/Template.php
+# Création du HomeController
+echo "<?php
+namespace App\Controller;
+use App\vue\Template;
+class HomeController{
+    public function getHome(){
+        ${16} = "";
+        Template::render('navbar.php', 'Accueil', 'vueHome.php', 'footer.php', 
+        ${16}, ['script.js', 'main.js'], ['style.css', 'main.css']);
+    }
+    public function get404(){
+        ${16} = "";
+        Template::render('navbar.php', 'Error 404', 'vueError.php', 'footer.php', 
+        ${16}, ['script.js'], ['style.css']);
+    }
+}
+?>">>$directory/App/Controller/HomeController.php
 # Création des fichiers asset
 touch $directory/Public/asset/script/script.js 
+touch $directory/Public/asset/script/main.js 
 touch $directory/Public/asset/style/style.css
+touch $directory/Public/asset/style/main.css
 echo "Votre projet à été créé"
 fi
