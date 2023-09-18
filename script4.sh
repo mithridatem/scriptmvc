@@ -187,5 +187,5 @@ touch $directory/Public/asset/script/script.js
 touch $directory/Public/asset/script/main.js 
 touch $directory/Public/asset/style/style.css
 touch $directory/Public/asset/style/main.css
-echo "Votre projet à été créé"
+echo "Votre projet a été créé"
 fi
