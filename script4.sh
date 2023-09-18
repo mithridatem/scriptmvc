@@ -150,15 +150,15 @@ echo "<?php
 namespace App\vue;
 class Template{
     public static function render(${12},${13},${14},${15},${16}, array ${17}, array ${18}){
-        if(file_exists('./App/Vue/'.$content)){
+        if(file_exists('./App/Vue/'.${14})){
             include './App/Vue/'.${12};
             include './App/Vue/'.${15};
             include './App/Vue/'.${14};
         }
         else{
-            ${12} = "";
-            ${15} = "";
-            ${13} = "Error 404";
+            ${12} = '';
+            ${15} = '';
+            ${13} = 'Error 404';
             include './App/Vue/vueError.php';
         }
         include './App/Vue/vueTemplate.php';
@@ -171,12 +171,12 @@ namespace App\Controller;
 use App\vue\Template;
 class HomeController{
     public function getHome(){
-        ${16} = "";
+        ${16} = '';
         Template::render('navbar.php', 'Accueil', 'vueHome.php', 'footer.php', 
         ${16}, ['script.js', 'main.js'], ['style.css', 'main.css']);
     }
     public function get404(){
-        ${16} = "";
+        ${16} = '';
         Template::render('navbar.php', 'Error 404', 'vueError.php', 'footer.php', 
         ${16}, ['script.js'], ['style.css']);
     }
