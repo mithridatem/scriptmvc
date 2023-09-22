@@ -8,7 +8,7 @@ Environnement Apache, PHP 8+, MySQL
 1. Ouvrir votre terminal bash (git bash) dans le répertoire de votre script,
 2. Lancer le script avec la commande :
 ```
-bash script4.sh
+bash script5.sh
 ```
 3. Répondre aux questions du script :
 Nom du projet, nom de la base de données, identifiant BDD, mot de passe BDD, emplacement du répertoire Environnement(localhost), répertoire web Apache.
