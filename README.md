@@ -25,7 +25,9 @@ bash script5.sh
    
    	6-Répertoire www ou htdocs serveur WEB Apache.
 ## Le script va générer la structure suivante :
-Répertoire de base du projet (avec le nom choisi),
+Répertoire de base du projet (avec le nom choisi)
+
+Répertoires :
 
 	-> Repertoire App (Répertoire source du projet 'src'),
 
@@ -41,13 +43,13 @@ Répertoire de base du projet (avec le nom choisi),
 
 	-> Vue (fichiers classe Template).
 
-	-> Répertoire Public/Asset
+	-> Répertoire Public/Asset (fichiers ressources publique du projet)
 
-	-> Répertoire images (fichiers => images),
+		-> Répertoire images (fichiers => images),
 
-	-> Répertoire script (fichiers => script JS),
+		-> Répertoire script (fichiers => script JS),
 
-	-> Répertoire style (fichiers => style CSS),
+		-> Répertoire style (fichiers => style CSS),
 
 fichiers :
 
