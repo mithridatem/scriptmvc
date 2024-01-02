@@ -59,31 +59,21 @@ echo "<?php
             return new \PDO('mysql:host='.$5.';dbname='.$6.'', $7, $8, 
             array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
 }}?>">>$directory/App/Utils/BddConnect.php
-# Création du fichier autoload.php
-echo "<?php
-    spl_autoload_register(function(${10}){
-        $9 = [
-            join(DIRECTORY_SEPARATOR, [__DIR__]),
-            join(DIRECTORY_SEPARATOR, [__DIR__, 'App\\Service']),
-            join(DIRECTORY_SEPARATOR, [__DIR__, 'App\\Utils']),
-            join(DIRECTORY_SEPARATOR, [__DIR__, 'App\\Model']),
-            join(DIRECTORY_SEPARATOR, [__DIR__, 'App\\Controller']),
-            join(DIRECTORY_SEPARATOR, [__DIR__, 'App\\Manager']),
-            join(DIRECTORY_SEPARATOR, [__DIR__, 'App\\Vue']),
-            join(DIRECTORY_SEPARATOR, [__DIR__, '..', 'App'])
-        ];
-        foreach($9 as $4){
-            ${11} = join(DIRECTORY_SEPARATOR, [$4, ${10}.'.php']) ;
-            if(file_exists(${11}))
-                return require_once ${11};
+# Création du fichier composer.json
+echo "{
+    \"name\": \"test/${directory}\",
+    \"type\": \"project\",
+    \"autoload\": {
+        \"psr-4\": {
+            \"App\\\\\": \"App/\"
         }
-    });
-?>">>$directory/autoload.php
+    }
+}">>$directory/composer.json
 # Création du router
 echo "<?php
     require_once './env.php';
     //import de l'autoloader des classes
-    require_once './autoload.php';
+    require_once './vendor/autoload.php';
     use App\Controller\HomeController;
     ${19} = new HomeController();
     //utilisation de session_start(pour gérer la connexion au serveur)
@@ -149,7 +139,8 @@ echo "<html lang="en">
 echo "<?php
 namespace App\vue;
 class Template{
-    public static function render(${12},${13},${14},${15},${16}, array ${17}, array ${18}){
+    public static function render(${12},${13},${14},${15},${16}, array ${17}, array ${18})
+    {
         if(file_exists('./App/Vue/'.${14})){
             include './App/Vue/'.${12};
             include './App/Vue/'.${15};
@@ -164,7 +155,8 @@ class Template{
         include './App/Vue/vueTemplate.php';
     }
 }
-?>">>$directory/App/Vue/Template.php
+?>
+">>$directory/App/Vue/Template.php
 # Création du HomeController
 echo "<?php
 namespace App\Controller;
@@ -181,11 +173,15 @@ class HomeController{
         ${16}, ['script.js'], ['style.css']);
     }
 }
-?>">>$directory/App/Controller/HomeController.php
+?>
+">>$directory/App/Controller/HomeController.php
 # Création des fichiers asset
 touch $directory/Public/asset/script/script.js 
 touch $directory/Public/asset/script/main.js 
 touch $directory/Public/asset/style/style.css
 touch $directory/Public/asset/style/main.css
 echo "Votre projet a été créé"
+cd $directory
+composer install
+echo "composer install ok"
 fi
