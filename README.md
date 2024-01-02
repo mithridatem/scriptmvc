@@ -12,11 +12,17 @@ PHP Composer 2.5 +.
 bash script5.sh
 ```
 3. Répondre aux questions du script :
+
 	1-Nom du projet,
+   
 	2-Nom de la base de données,
+   
 	3-Identifiant BDD,
+   
    	4-Mot de passe BDD,
+   
    	5-Emplacement du serveur Environnement(localhost),
+   
    	6-Répertoire www ou htdocs serveur WEB Apache.
 ## Le script va générer la structure suivante :
 Répertoire de base du projet (avec le nom choisi),
