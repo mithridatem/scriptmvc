@@ -2,8 +2,9 @@
 Ce script bash permet de générer une base de projet PHP MVC MySQL
 ## Prés-requis : 
 Environnement terminal bash (git bash),
-Windows,
-Environnement Apache, PHP 8+, MySQL
+Windows, Linux,
+Environnement Apache, PHP 8 +, MySQL ou MariaDB,
+PHP Composer 2.5 +.
 ## Utilisation du script :
 1. Ouvrir votre terminal bash (git bash) dans le répertoire de votre script,
 2. Lancer le script avec la commande :
@@ -11,7 +12,12 @@ Environnement Apache, PHP 8+, MySQL
 bash script5.sh
 ```
 3. Répondre aux questions du script :
-Nom du projet, nom de la base de données, identifiant BDD, mot de passe BDD, emplacement du répertoire Environnement(localhost), répertoire web Apache.
+	1-Nom du projet,
+	2-Nom de la base de données,
+	3-Identifiant BDD,
+   	4-Mot de passe BDD,
+   	5-Emplacement du serveur Environnement(localhost),
+   	6-Répertoire www ou htdocs serveur WEB Apache.
 ## Le script va générer la structure suivante :
 Répertoire de base du projet (avec le nom choisi),
 
@@ -31,19 +37,19 @@ Répertoire de base du projet (avec le nom choisi),
 
 	-> Répertoire Public/Asset
 
-	-> Répertoire images (fichier images),
+	-> Répertoire images (fichiers => images),
 
-	-> Répertoire script (fichier script JS),
+	-> Répertoire script (fichiers => script JS),
 
-	-> Répertoire style (fichier style CSS),
+	-> Répertoire style (fichiers => style CSS),
 
 fichiers :
 
 	-> env.php (fichier de configuration BDD),
 
-	-> autoload.php (fichier autoloader classe),
-
 	-> index.php (fichier router),
+
+  	-> composer.json (fichier de configuration composer)
 
 	->.htaccess (fichier configuration Apache),
 
@@ -66,7 +72,7 @@ Le script va configurer les fichiers suivants :
 
 	-> env.php (configuration des informations de connexion à la base de données),
 
-	-> autoload.php (configuration du fichier d'autochargement des classes),
+	-> composer.json (configuration de composer pour l'autoload des classes),
 
 	-> index.php (configuration du router avec la configuration du projet),
 
