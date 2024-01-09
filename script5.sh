@@ -139,7 +139,7 @@ echo "<html lang="en">
 </html>">>$directory/App/Vue/vueTemplate.php
 # Création de la classe Template
 echo "<?php
-namespace App\vue;
+namespace App\Vue;
 class Template{
     public static function render(${12},${13},${14},${15},${16}, array ${17}, array ${18})
     {
@@ -162,7 +162,7 @@ class Template{
 # Création du HomeController
 echo "<?php
 namespace App\Controller;
-use App\vue\Template;
+use App\Vue\Template;
 class HomeController{
     public function getHome(){
         ${16} = '';
