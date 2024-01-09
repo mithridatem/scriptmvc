@@ -44,10 +44,10 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+)$ index.php [QSA,L]">>$directory/.htaccess
 # Création du fichier de configuration BDD
 echo "<?php
-    $5= '$host';
-    $6 = '$database';
-    $7= '$userDb';
-    $8 = '$mdpUser';
+    const HOST = '$host';
+    const DATABASE = '$database';
+    const LOGIN = '$userDb';
+    const PASSWORD = '$mdpUser';
 ?>">>$directory/env.php
 # Création classe de connexion BDD
 echo "<?php
@@ -56,9 +56,11 @@ echo "<?php
         //fonction connexion BDD
         public function connexion(){
             //retour de l'objet PDO
-            return new \PDO('mysql:host='.$5.';dbname='.$6.'', $7, $8, 
+            return new \PDO('mysql:host='.HOST.';dbname='.DATABASE.'', LOGIN, PASSWORD, 
             array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
-}}?>">>$directory/App/Utils/BddConnect.php
+        }
+    }
+">>$directory/App/Utils/BddConnect.php
 # Création du fichier composer.json
 echo "{
     \"name\": \"test/${directory}\",
