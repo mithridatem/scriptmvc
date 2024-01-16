@@ -124,10 +124,10 @@ echo "<html lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php foreach (${18} as ${21}):?>
-    <link rel="stylesheet" href=\"/$directory/Public/asset/style/\<?=${21}\?\>\">
+    <link rel="stylesheet" href=\"/$directory/Public/asset/style/<?=${21}?>\">
     <?php endforeach ?>
     <?php foreach (${17} as ${21}):?>
-    <script src=\"/$directory/Public/asset/script/\<?=${21}\?\>\" async></script>
+    <script src=\"/$directory/Public/asset/script/<?=${21}?>\" async></script>
     <?php endforeach ?>
     <title><?=${13}?></title>
 </head>
