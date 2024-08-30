@@ -198,6 +198,7 @@ else
             # Download de composer
             curl -O https://getcomposer.org/download/latest-stable/composer.phar
             chmod -x composer.phar
+            echo "composer installé"
             composer.phar install
         else
             composer install
